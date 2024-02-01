@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreatePlan = () => {
   const [formData, setFormData] = useState({
@@ -60,6 +62,14 @@ const CreatePlan = () => {
             MaxBudgetConstraint: '',
             isDisabledPersonCount: 0,
           });
+          toast.success('Your request has been sent successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
         })
         .catch((error) => {
           console.error('Error submitting form data:', error.message);
@@ -70,8 +80,8 @@ const CreatePlan = () => {
 
   return (
     <div className="container mx-auto">
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-slate-500  p-8 transition-all duration-300 snake-border text-gray-300">
-        <h2 className="text-2xl font-semibold mb-4 text-center" >User Information</h2>
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-slate-800 shadow-2xl  p-8 text-gray-300">
+        <h2 className="text-2xl text-white font-semibold mb-4 text-center" >User Information</h2>
 
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-200 font-bold mb-2">
@@ -81,7 +91,7 @@ const CreatePlan = () => {
             type="text"
             id="username"
             name="username"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.username}
             required
@@ -96,7 +106,7 @@ const CreatePlan = () => {
             type="text"
             id="mobileNo"
             name="mobileNo"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.mobileNo}
             required
@@ -111,7 +121,7 @@ const CreatePlan = () => {
             type="email"
             id="email"
             name="email"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.email}
             required
@@ -126,7 +136,7 @@ const CreatePlan = () => {
             type="text"
             id="destination"
             name="destination"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.destination}
             required
@@ -134,14 +144,14 @@ const CreatePlan = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="totalMembers" className="block text-gray-200 font-bold mb-2">
+          <label htmlFor="totalMembers" className="block text-gray-200 font-bold mb-2 ">
             Total Members
           </label>
           <input
             type="number"
             id="totalMembers"
             name="totalMembers"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.totalMembers}
             min={1}
@@ -157,7 +167,7 @@ const CreatePlan = () => {
             type="number"
             id="totalDays"
             name="totalDays"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.totalDays}
             min={1}
@@ -172,7 +182,7 @@ const CreatePlan = () => {
           <select
             name="transportationPreference"
             id="transportationPreference"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.transportationPreference}
             required
@@ -185,18 +195,18 @@ const CreatePlan = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="foodPreference" className="block text-gray-200 font-bold mb-2">
+          <label htmlFor="foodPreference" className="block text-gray-200 font-bold mb-2 ml-0">
             Food Preference
           </label>
           <select
             name="foodPreference"
             id="foodPreference"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.foodPreference}
             required
           >
-            <option className="bg-slate-700" value="" disabled>Select food preference</option>
+            <option className="bg-slate-700 " value="" disabled>Select food preference</option>
             <option value="veg">Vegetarian</option>
             <option value="non-veg">Non-Vegetarian</option>
             <option value="jain-veg">Jain Vegetarian</option>
@@ -205,13 +215,13 @@ const CreatePlan = () => {
 
         <div className="mb-4">
           <label htmlFor="MaxBudgetConstraint" className="block text-gray-200 font-bold mb-2">
-            Max Budget Constraint
+            Your Maximum Budget
           </label>
           <input
             type="number"
             id="MaxBudgetConstraint"
             name="MaxBudgetConstraint"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.MaxBudgetConstraint}
             min={0}
@@ -220,22 +230,27 @@ const CreatePlan = () => {
 
         <div className="mb-4">
           <label htmlFor="isDisabledPersonCount" className="block text-gray-200 font-bold mb-2">
-            Enter the Person count which are disabled
+            Enter the Number of Person are disabled
           </label>
           <input
             type="number"
             id="isDisabledPersonCount"
             name="isDisabledPersonCount"
-            className="w-full p-2 border rounded-lg bg-gray-700 text-white"
+            className="w-full p-2 border rounded-lg bg-gray-700 text-white ml-1"
             onChange={handleChange}
             value={formData.isDisabledPersonCount}
           />
         </div>
         <div className='flex justify-center items-center'>
-          <button type="submit" className="bg-slate-700 text-white flex justify-center items-center px-4 py-2 mt-3 rounded-lg">
+          <button
+            type="submit"
+            className="bg-slate-700 text-white flex justify-center items-center px-4 py-2 mt-3 border rounded-lg transition-all duration-300 hover:bg-slate-900 hover:shadow-lg"
+          >
             Submit
           </button>
+
         </div>
+        <ToastContainer />
       </form>
     </div>
   );

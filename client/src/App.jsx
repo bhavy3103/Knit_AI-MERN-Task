@@ -1,10 +1,15 @@
-import React from 'react'
+// import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreatePlan from './pages/CreatePlan'
 
 const App = () => {
   return (
-    <div className='text-red-600'>
-      App
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CreatePlan />}></Route>
+      </Routes>
+
+    </BrowserRouter >
   )
 }
 

@@ -75,7 +75,6 @@ const CreatePlan = () => {
           console.error('Error submitting form data:', error.message);
         });
     }
-
   }
 
   return (

@@ -78,13 +78,13 @@ const CreatePlan = () => {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto shadow-gray-800">
       <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-slate-800 shadow-2xl  p-8 text-gray-300">
-        <h2 className="text-2xl text-white font-semibold mb-4 text-center" >User Information</h2>
+        <h2 className="text-2xl text-white font-semibold mb-6 text-center shadow-lg" >Travel Plan Information</h2>
 
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-200 font-bold mb-2">
-            Username
+            Your Name
           </label>
           <input
             type="text"

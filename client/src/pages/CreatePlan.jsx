@@ -35,7 +35,7 @@ const CreatePlan = () => {
       formData.transportationPreference &&
       formData.foodPreference
     ) {
-      fetch('http://localhost:3000/api/user/create-plan', {
+      fetch('/api/user/create-plan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
